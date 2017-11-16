@@ -60,19 +60,7 @@ spec:
             scheme: HTTPS                                        
       volumes:
       - name: vault-file-backend
-        persistentVolumeClaim:
-          claimName: vault-file-backend
+        emptyDir: {}
       - name: vault-cert
         secret:
           secretName: vault-cert          
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: vault-file-backend
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi                    
